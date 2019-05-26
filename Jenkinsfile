@@ -4,17 +4,17 @@ pipeline {
     stages {
         stage('Build') {
           steps {
-            npm install
+            sh "npm install"
           }
         }
         stage('Test') {
             steps {
-               npm run test:unit
+               sh "npm run test:unit"
             }
         }
         stage('Deploy') {
             steps {
-                docker build . -t vue-real-world
+                sh "docker build . -t vue-real-world"
             }
         }
     }
