@@ -2,19 +2,19 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
-            steps {
-                echo 'Checkout repo...'
-            }
+        stage('Build') {
+          steps {
+            npm install
+          }
         }
         stage('Test') {
             steps {
-                echo 'Testing..'
+               npm run test:unit
             }
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying....'
+                docker build . -t vue-real-world
             }
         }
     }
